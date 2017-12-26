@@ -12,6 +12,8 @@ taxonomy:
 | [GooglePoly.setAPIKey(QString key)](#m1) | void |
 | [GooglePoly.getAssetList(QString keyword, QString category, QString format)](#m2) | string |
 | [GooglePoly.getFBX(QString keyword, QString category)](#m3) | string |
+| [GooglePoly.getOBJ(QString keyword, QString category)](#m4) | string |
+| [GooglePoly.getBlocks(QString keyword, QString category)](#m5) | string |
 
 
 ## Methods
@@ -109,24 +111,103 @@ print(list[0].displayName); /* Prints the name of the first asset on the list */
 
 ### getFBX()<a id="m3"></a>
 
-Returns a string that links to a FBX model's URL.
+Returns a string that is an FBX model's URL. A model is randomly selected from the retrieved asset list that meets user-specified criteria.
 
 #### Function
 
-`getAssetList(QString keyword, QString category, QString format)`
+`getFBX(QString keyword, QString category)`
 
 #### Arguments
 
 **keyword: QString**: Keywords can be specified to filter assets. Multiple keywords should be separated with spaces.
 <br />**category: QString**: Valid categories are: "animals, architecture, art, food, nature, objects, people, scenes, technology, transport".
-<br />**format: QString**: Valid formats are: "BLOCKS, FBX, GLTF, GLTF2, OBJ, TILT".
 
 #### Returns
 
-**string**: A stringified version of the JSON array that Poly returns
+**string**: The FBX model's URL.
 
 #### Example
 
-Below is a retrieval of an asset list after an API key has been provided.
+Below is a retrieval of an asset after an API key has been provided.
 ```
+var model = GooglePoly.getFBX("dog", "");
+Entities.addEntity({type: "Model", modelURL: model, position: Vec3.sum(MyAvatar.position, Quat.getFront(MyAvatar.orientation))}) /* A dog will rezz in front of you */
+```
+
+
+### getOBJ()<a id="m4"></a>
+
+Returns a string that is an OBJ model's URL. A model is randomly selected from the retrieved asset list that meets user-specified criteria.
+
+#### Function
+
+`getOBJ(QString keyword, QString category)`
+
+#### Arguments
+
+**keyword: QString**: Keywords can be specified to filter assets. Multiple keywords should be separated with spaces.
+<br />**category: QString**: Valid categories are: "animals, architecture, art, food, nature, objects, people, scenes, technology, transport".
+
+#### Returns
+
+**string**: The OBJ model's URL.
+
+#### Example
+
+Below is a retrieval of an asset after an API key has been provided.
+```
+var model = GooglePoly.getOBJ("cat", "");
+Entities.addEntity({type: "Model", modelURL: model, position: Vec3.sum(MyAvatar.position, Quat.getFront(MyAvatar.orientation))}) /* A cat will rezz in front of you */
+```
+
+
+### getBlocks()<a id="m5"></a>
+
+Returns a string that is a Blocks model's URL. A model is randomly selected from the retrieved asset list that meets user-specified criteria.
+
+#### Function
+
+`getBlocks(QString keyword, QString category)`
+
+#### Arguments
+
+**keyword: QString**: Keywords can be specified to filter assets. Multiple keywords should be separated with spaces.
+<br />**category: QString**: Valid categories are: "animals, architecture, art, food, nature, objects, people, scenes, technology, transport".
+
+#### Returns
+
+**string**: The Blocks model's URL.
+
+#### Example
+
+Below is a retrieval of an asset after an API key has been provided.
+```
+var model = GooglePoly.getBlocks("bird", "");
+Entities.addEntity({type: "Model", modelURL: model, position: Vec3.sum(MyAvatar.position, Quat.getFront(MyAvatar.orientation))}) /* A bird will rezz in front of you */
+```
+
+
+### getGLTF()<a id="m6"></a>
+
+Returns a string that is a GLTF model's URL. A model is randomly selected from the retrieved asset list that meets user-specified criteria.
+
+#### Function
+
+`getGLTF(QString keyword, QString category)`
+
+#### Arguments
+
+**keyword: QString**: Keywords can be specified to filter assets. Multiple keywords should be separated with spaces.
+<br />**category: QString**: Valid categories are: "animals, architecture, art, food, nature, objects, people, scenes, technology, transport".
+
+#### Returns
+
+**string**: The GLTF model's URL.
+
+#### Example
+
+Below is a retrieval of an asset after an API key has been provided.
+```
+var model = GooglePoly.getGLTF("snake", "");
+Entities.addEntity({type: "Model", modelURL: model, position: Vec3.sum(MyAvatar.position, Quat.getFront(MyAvatar.orientation))}) /* A snake will rezz in front of you */
 ```
